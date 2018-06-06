@@ -1,0 +1,56 @@
+<ion-view view-title="Register" align-title="left"  style="background: url(img/home.jpg);background-size:cover;">
+    <ion-content class="transparent-white-bg">
+    <div class="content">
+    <form name="regForm" novalidate="" ng-submit="register(regForm)" role="form">
+        <div class="list">
+            <label class="item item-input" ng-class="{ 'has-errors' : regForm.fullname.$invalid, 'no-errors' : regForm.fullname.$valid}">
+            <ion-md-input placeholder="Name" highlight-color="balanced" name="fullname" type="text" ng-model="data.fullname" required="required"></ion-md-input>
+            </label>
+
+            <div class="error-container last-error-container" ng-show="regForm.fullname.$error && regForm.$submitted" ng-messages="regForm.fullname.$error">
+                <div ng-messages-include="templates/error_list.html"></div>  
+            </div> 
+
+            <label class="item item-input" ng-class="{ 'has-errors' : regForm.email.$invalid, 'no-errors' : regForm.email.$valid}">
+            <ion-md-input placeholder="Email" highlight-color="energized" name="email" ng-pattern="/^.+@.+\..+$/" type="text" ng-model="data.email"  ng-minlength="5" required="required"></ion-md-input>
+            </label>
+            <div class="error-container last-error-container" ng-show="regForm.email.$error && regForm.$submitted" ng-messages="regForm.email.$error">
+                <div ng-messages-include="templates/error_list.html"></div>  
+            </div> 
+
+            <label class="item item-input" ng-class="{ 'has-errors' : regForm.pwd.$invalid, 'no-errors' : regForm.pwd.$valid}">
+            <ion-md-input placeholder="Password" highlight-color="energized" name="pwd" type="password" ng-model="data.pwd" required="required" ng-minlength="8" required=""></ion-md-input>
+            </label>
+            <div class="error-container last-error-container" ng-show="regForm.pwd.$error && regForm.$submitted" ng-messages="regForm.pwd.$error">
+                <div ng-messages-include="templates/error_list.html"></div>  
+            </div> 
+
+            <label class="item item-input" ng-class="{ 'has-errors' : regForm.mobile.$invalid, 'no-errors' : regForm.mobile.$valid}">
+            <ion-md-input placeholder="Mobile Number" highlight-color="energized" name="mobile" type="text" ng-model="data.mobile" ng-minlength="10" required="required"></ion-md-input>
+            </label>
+            <div class="error-container last-error-container" ng-show="regForm.mobile.$error && regForm.$submitted" ng-messages="regForm.mobile.$error">
+                <div ng-messages-include="templates/error_list.html"></div>  
+            </div> 
+
+            <label class="item item-input" ng-class="{ 'has-errors' : regForm.city.$invalid, 'no-errors' : regForm.city.$valid}">
+            <ion-md-input placeholder="City" highlight-color="energized" name="city" type="text" ng-model="data.city" required="required"></ion-md-input>
+            </label>
+            <div class="error-container last-error-container" ng-show="regForm.city.$error && regForm.$submitted" ng-messages="regForm.city.$error">
+                <div ng-messages-include="templates/error_list.html"></div>  
+            </div> 
+       </div>
+        <div class="padding">
+            <span class="textwhite" >By registering with us you agree to the <a id="link-1" href ng-click="openModalTNC()" class="textwhite">Terms and Conditions </a></span>
+        </div>
+        <div class="padding button-bar nodropshadow">
+            <button class="button button-small button-stable ink icon-left ion-chevron-left" type="button"  ui-sref="app.login">Cancel</button>&nbsp;
+            <button class="button button-small button-balanced ink icon-right ion-chevron-right" type="submit" >Register</button>
+        </div>
+       </form>
+      
+   </div>
+    </ion-content>
+</ion-view>
+
+
+

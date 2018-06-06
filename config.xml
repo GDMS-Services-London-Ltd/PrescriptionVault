@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.prescriptionvault.app" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Prescription Vault</name>
+    <description>
+        An useful medical app
+    </description>
+    <author email="manish4me@gmail.com" href="http://ionicframework.com/">
+      Prescription Vault Team
+    </author>
+    <content src="index.html" />
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <access origin="*" />
+    <preference name="webviewbounce" value="false" />
+    <preference name="UIWebViewBounce" value="false" />
+    <preference name="DisallowOverscroll" value="true" />
+    <preference name="BackupWebStorage" value="none" />
+    <preference name="SplashShowOnlyFirstTime" value="false" />
+    <preference name="SplashScreen" value="screen" />
+    <preference name="SplashScreenDelay" value="10000" />
+    <preference name="AndroidPersistentFileLocation" value="Compatibility" />
+    <feature name="StatusBar">
+        <param name="ios-package" onload="true" value="CDVStatusBar" />
+    </feature>
+    <platform name="android">
+        <allow-intent href="market:*" />
+        <icon density="ldpi" src="resources/android/icon/appicon.png" />
+        <icon density="mdpi" src="resources/android/icon/appicon.png" />
+        <icon density="hdpi" src="resources/android/icon/appicon.png" />
+        <icon density="xhdpi" src="resources/android/icon/appicon.png" />
+        <icon density="xxhdpi" src="resources/android/icon/appicon.png" />
+        <icon density="xxxhdpi" src="resources/android/icon/appicon.png" />
+        <splash density="land-ldpi" src="resources/android/splash/splash.png" />
+        <splash density="land-mdpi" src="resources/android/splash/splash.png" />
+        <splash density="land-hdpi" src="resources/android/splash/splash.png" />
+        <splash density="land-xhdpi" src="resources/android/splash/splash.png" />
+        <splash density="land-xxhdpi" src="resources/android/splash/splash.png" />
+        <splash density="land-xxxhdpi" src="resources/android/splash/splash.png" />
+        <splash density="port-ldpi" src="resources/android/splash/splash.png" />
+        <splash density="port-mdpi" src="resources/android/splash/splash.png" />
+        <splash density="port-hdpi" src="resources/android/splash/splash.png" />
+        <splash density="port-xhdpi" src="resources/android/splash/splash.png" />
+        <splash density="port-xxhdpi" src="resources/android/splash/splash.png" />
+        <splash density="port-xxxhdpi" src="resources/android/splash/splash.png" />
+    </platform>
+    <plugin name="cordova-plugin-whitelist" spec="1" />
+    <plugin name="cordova-plugin-file" spec="~4.1.0" />
+    <engine name="android" spec="^6.2.3" />
+    <engine name="browser" spec="^5.0.3" />
+</widget>

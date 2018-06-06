@@ -1,0 +1,53 @@
+<ion-view view-title="Favorite Doctors">
+     <ion-content ng-class="{expanded:$scope.isExpanded}"  style="background: url('img/1g.jpg') center,linear-gradient(#76b852, #1B5E20) ; background-size: cover;" >
+
+              
+                
+<div class="content has-header top0 "  >
+        <ion-list >
+        <ion-item ng-repeat="item in favresult" style="padding:0px;" >
+
+        <div class="list condensed-space no-padding textwhite searchresult" >
+                <div class="card in" ng-class-odd="'transparent-green-bg'" ng-class-even="'transparent-bg'" >
+                    <a class="item clear-bg item-bg-image waves-effect waves-button waves-light has-mask-reverse dropshadow" style="padding-left:95px;">
+                      <span class="avatar " style="background-image: url({{ item.results.url }}),linear-gradient(#28a54c, #e0e0e0);z-index:1;"></span>
+                      <p class="patient text-right"><i  class="icon ion-ios-close-outline energized" ng-click="markUnstarred(item.results.loc_id)" ></i></p>
+                        <h2>Dr. {{ item.results.first_name }} {{ item.results.last_name }}</h2>
+                        <p class="topborder">{{ item.results.speciality }}, {{ item.results.qualification }}</p>
+                        <p class="topborder">{{ item.results.address|titleCase}}, {{ item.results.city }}</p>
+                        <p ><i class="icon ion-calendar"></i> {{ item.results.hours }} <i class="icon ion-cash"></i> Fees {{ item.results.fees }}/-</p>
+                    </a>
+
+                    <div class=" textwhite buttons button-bar">
+                    <div class="button-bar padding-left padding-right padding-top patient">
+            <button class="button button-small button-border  ion-ios-help-outline button-energized" ui-sref="app.doctorinfo({loc_id: item.results.loc_id})"></button>
+            <button class="button button-small button-border  ion-ribbon-b button-assertive-900"></button>
+            <button class="button button-small button-border  ion-ios-telephone-outline button-royal-900"></button>
+            <button class="button button-small button-border  ion-android-calendar button-calm-900" ui-sref="app.bookappointment({loc_id: item.results.loc_id})"></button>
+        </div>
+                    </div>
+                </div>
+                
+        </div>
+        </ion-item>
+
+      </ion-list>
+
+      <div class="mid-bar z1 textwhite transparent-dark-bg padding" ng-show="favresult.length==0" >
+        <h3>No Doctors Saved!</h3>
+            No doctors have been saved in your Favorite list. Please &nbsp;<i class="icon ion-search balanced" ui-sref='app.searchdoctors' style="margin-top:-6px;"> &nbsp;search</i> doctors based on your desired search criteria and add them to Favorite list. 
+        </div>
+
+      <ion-infinite-scroll ng-if="!noMoreItemsAvailable" on-infinite="loadMore()" distance="10%"  icon="ion-loading-c"></ion-infinite-scroll>
+
+</div>
+      
+    </ion-content>
+    <ion-footer-bar class="bar-dark padding-top padding-left smalltext textwhite patient">
+      Showing {{ favresult.length }} Doctor(s) from Favorites
+    </ion-footer-bar>
+</ion-view>
+
+
+
+    

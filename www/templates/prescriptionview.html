@@ -1,0 +1,16 @@
+<ion-modal-view>
+    <ion-header-bar class="bar bar-header bar-positive">
+      <h1 class="title">View Picture</h1>
+      <div class="button button-clear" ng-click="modal.hide()"><span class="icon ion-close"></span></div>
+    </ion-header-bar>
+    <ion-content has-header="true" padding="true" class="dark-bg">
+    <div class="padding" > 
+      	<h4 class="textwhite">{{moddate}}</h4>
+        <img class="full-image" src="{{imgsrc}}">
+        <button class="button button-full button-balanced ink icon-left ion-ios-cloud-upload-outline"  type="button" ng-show="showchangebutton" ng-click="openModalPU(reg_user_id)" >Change Picture</button>
+		</div>
+
+    </ion-content >
+ </ion-modal-view>
+
+  		

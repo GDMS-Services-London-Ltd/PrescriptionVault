@@ -1,0 +1,72 @@
+    <ion-view view-title="Prescriptions">
+        <ion-content ng-class="{expanded:isExpanded}" style="background: url('img/1e.jpg') center,linear-gradient(#76b852, #1B5E20) ; background-size: cover;">
+
+        <div class="content has-header top0 "  >
+        <ion-list >
+        <ion-item ng-repeat="member in members" style="padding:0px;" >
+
+        <div class="list condensed-space no-padding textwhite searchresult" >
+                <div class="card in" ng-class-odd="'transparent-green-bg'" ng-class-even="'transparent-white-bg'" >
+                    <a class="item clear-bg item-bg-image waves-effect waves-button waves-light has-mask-reverse dropshadow" style="padding-left:95px;">
+                      <span class="avatar " style="background-image: url({{photo.src}}),linear-gradient(#28a54c, #e0e0e0);z-index:1;"></span>
+
+                     <p class="patient text-right"><i  class="icon ion-android-calendar light" ng-click="go('app.appointmenthistory',{mbr_id:member.mbr_id})" ></i></p>
+                        <h2>{{member.mbr_name}}</h2>
+                        <p class="topborder">{{member.mbr_relation}}</p>
+                        <p class="topborder">Age: {{member.mbr_dob | ageFilter}} years</p>
+                        <p ng-show="filterPhotos.length !=1" ng-click="toggleGroup(member.mbr_id)" ng-class="{active: isGroupShown(member.mbr_id)}" >
+                        {{filterPhotos.length}} Prescriptions </p>
+                        <p ng-show="filterPhotos.length ==1" ng-click="toggleGroup(member.mbr_id)" ng-class="{active: isGroupShown(member.mbr_id)}" >
+                        {{filterPhotos.length}} Prescription </p>
+                    </a>
+
+                    <div class=" textwhite buttons button-bar">
+                    <div class="button-bar padding-left padding-right padding-top patient">
+                        <button class="button button-small button-border  button-royal-900" 
+            ng-click="toggleGroup(member.mbr_id)"  ng-class="isGroupShown(member.mbr_id) ? 'ion-ios-minus' : 'ion-images'"></button>
+            <button class="button button-small button-border  button-balanced ion-ios-cloud-upload" ng-click="openModalPU(member.mbr_id)"></button>
+            <button class="button button-small button-border  ion-compose button-calm-900" ui-sref="app.addmember({mbr_id: member.mbr_id,formop:'Edit'})"></button>
+            <button class="button button-small button-border  ion-ios-close-outline button-assertive-900" ng-click="deleteMember(member.mbr_id, member.mbr_name)"></button>
+            
+            
+            
+            
+        </div>
+
+        
+                    </div>
+                    <div ng-show="isGroupShown(member.mbr_id)" class="list half" style=" padding:0px;" ng-repeat="photo in filterPhotos =( photos | filter:{mbr_id : member.mbr_id})" >
+                <div class="card item item-text-wrap">
+                    <div class="ink dark-bg padding">
+                        <h4 class="textwhite">{{photo.lastmodified}}</h4>
+                        <img class="full-image" src="{{photo.src}}" style="height:9em;" ng-click="openModalPV('{{photo.lastmodified}}', '{{photo.src}}')" >
+                        
+                    </div>
+                    <div class="item tabs tabs-secondary tabs-icon-left patient">
+                        <a href="#" ng-click="deletePrescription(photo.desc)"><i class="icon ion-ios-close-outline energized" ></i></a>
+                    </div>
+                </div>
+            </div>
+                </div>
+                
+        </div>
+
+        </ion-item>
+
+      </ion-list>
+  
+
+
+</div>
+
+        
+
+
+    
+
+        </ion-content>
+        <ion-footer-bar class="bar-dark padding-top padding-left smalltext textwhite">
+      You have added {{members.length}} member(s)
+    </ion-footer-bar>
+          
+    </ion-view>

@@ -1,0 +1,41 @@
+<ion-view view-title="Login" align-title="left">
+    <ion-content style="background: url('img/home.jpg') center,linear-gradient(#76b852, #1B5E20) ; background-size: cover;">
+        <div class="hero no-header flat">
+            <div class="content">
+                <div class="app-icon"></div>
+                <h1>Prescription Vault</h1>
+            </div>
+        </div>
+        <form name="authorizationForm" novalidate="" ng-submit="login(authorizationForm)">
+        <div class="list">
+            <label class="item item-input" ng-class="{ 'has-errors' : authorizationForm.username.$invalid, 'no-errors' : authorizationForm.username.$valid}">
+            <ion-md-input placeholder="Username" highlight-color="calm" name="username" ng-model="data.username" ng-value="data.email" lowercase ng-pattern="/^.+@.+\..+$/" required="required"></ion-md-input>
+            </label>
+            <div class="error-container last-error-container" ng-show="authorizationForm.username.$error && authorizationForm.$submitted" ng-messages="authorizationForm.username.$error">
+                <div ng-messages-include="templates/error_list.html"></div>  
+            </div>
+
+            <label class="item item-input" ng-class="{ 'has-errors' : authorizationForm.password.$invalid, 'no-errors' : authorizationForm.password.$valid}">
+            <ion-md-input placeholder="Password" highlight-color="calm" name="password" type="password" ng-model="data.password" required="required"></ion-md-input>
+            </label>
+            <div class="error-container last-error-container" ng-show="authorizationForm.password.$error && authorizationForm.$submitted" ng-messages="authorizationForm.password.$error">
+                <div ng-messages-include="templates/error_list.html"></div>  
+            </div>
+        </div>
+        <p class="text-center textwhite" style="margin:0px;" ui-sref="app.verify">Already Registered? Activate your account</p>
+        <div class="padding-left padding-right">
+            <button class="button button-full button-balanced-900 ink icon-right ion-chevron-right" type="submit">Login</button>
+            <div class="button-bar login nodropshadow">
+            <button class="button button-small button-clear button-energized"  ui-sref="app.forgetpassword">Forget Password</button>
+            <button class="button button-small button-clear button-energized" ui-sref="app.register(({formop:'New'}))">Sign Up</button>
+            </div>
+        </div>
+        </form>
+        <div class="button-bar padding-left padding-right padding-top ">
+            <button class="button button-small button-border icon-left ion-social-google button-assertive-900">Google+</button>
+            <button class="button button-small button-border icon-left ion-social-facebook button-positive-900">Facebook</button>
+        </div>
+    </ion-content>
+</ion-view>
+
+

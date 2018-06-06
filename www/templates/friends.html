@@ -1,0 +1,27 @@
+<ion-view view-title="Members">
+    <ion-content ng-class="{expanded:isExpanded}">
+        <div class="content has-header top0">
+
+            <div ng-show="members.length ==0" class="dark-bg textwhite">No members added! Please use the Add Member button at the bottom to add members.</div>
+
+            <div class="list">
+     <div class="item card-item patient" ng-repeat="member in members">
+            <div class="card stable-bg ink ink-dark">
+                <div class="item item-avatar item-text-wrap">
+                    <span class="avatar" style="background-image: url('img/daenerys.jpg');"></span>
+                    <h2>{{member.mbr_name}}</h2>
+                    <p>{{member.mbr_relation}}</p>
+                    <div class="card-footer text-right">
+                        <a href="#" ><i class="icon ion-compose positive" ui-sref="app.addmember({mbr_id: member.mbr_id,formop:'Edit'})"></i></a>&nbsp;&nbsp;&nbsp;
+                        <a href="#" ng-click="deleteMember(member.mbr_id, member.mbr_name)"><i class="icon ion-ios-trash assertive" ></i></a>
+                        <div class="pull-left">
+                            Age: {{member.mbr_dob | ageFilter}} years
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+         </div>
+        </div>
+    </ion-content>
+</ion-view>

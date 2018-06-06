@@ -1,0 +1,58 @@
+<ion-view view-title="Contact Us" align-title="left">
+    <ion-content ng-class="{expanded:isExpanded}" style="background: url('img/home.jpg') center,linear-gradient(#76b852, #1B5E20) ; background-size: cover;">
+    <div class="content has-header top0 padding" >
+    <form name="regForm" novalidate=""  role="form">
+              <div class="mid-bar textwhite text-center transparent-dark-bg">
+            Contact Us</strong>
+        </div>
+
+ <md-content md-theme="docs-dark" layout-gt-sm="row" class="padding-left padding-right dropshadow">
+ 
+    <div>
+
+        <md-input-container class="md-block" >
+        <label>Name</label>
+        <md-icon md-svg-src="img/icons/ic_person_24px.svg" ></md-icon>
+        <input ng-model="contact.name" type="text">
+      </md-input-container>
+      <md-input-container class="md-block" >
+        <label>Email</label>
+        <md-icon md-svg-src="img/icons/ic_email_24px.svg" ></md-icon>
+        <input ng-model="contact.email" type="text">
+      </md-input-container>
+      <md-input-container class="md-block" >
+        <label>Mobile</label>
+        <md-icon md-svg-src="img/icons/ic_phone_24px.svg" ></md-icon>
+        <input ng-model="contact.mobile"  type="text">
+      </md-input-container>
+
+      <md-input-container>
+    <label>Message</label>
+    <md-icon md-svg-src="img/icons/ic_email_24px.svg" ></md-icon>
+    <textarea name="message" ng-model="contact.message" required md-maxlength="250"></textarea>
+    <div ng-messages="regForm.message.$error" ng-show="regForm.message.$dirty">
+      <div ng-message="required">This is required!</div>
+      <div ng-message="md-maxlength">That's too long!</div>
+    </div>
+    </md-input-container>
+
+</div>
+
+
+            
+            <button class="button button-full button-balanced ink icon-right ion-chevron-right" type="submit" >Submit</button>
+        
+</md-content>
+
+        
+       </form>
+      
+   </div>
+    </ion-content>
+    <ion-footer-bar class="bar-dark padding-top padding-left smalltext textwhite">
+      Emails us at  &nbsp;<a href='mailto:support@prescriptionvault.in' style="color:white;">support@prescriptionvault.in</a>
+    </ion-footer-bar>
+</ion-view>
+
+
+

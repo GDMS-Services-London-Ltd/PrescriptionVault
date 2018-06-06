@@ -1,0 +1,8 @@
+    <ion-view view-title="Dr. {{ currentdoctor.results.first_name }} {{ currentdoctor.results.last_name }}">
+     <ion-content ng-class="{expanded:$scope.isExpanded}"  >
+                <div id="mapsingle" data-tap-disabled="true"></div>
+    </ion-content>
+<ion-footer-bar class="bar-dark padding-top padding-left smalltext textwhite">
+      Address: {{ currentdoctor.results.address }} {{ currentdoctor.results.city }}
+    </ion-footer-bar>
+</ion-view>

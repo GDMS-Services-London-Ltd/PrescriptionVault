@@ -1,0 +1,97 @@
+<ion-view view-title="{{formop}} Member" align-title="left">
+    <ion-content style="background: url(img/service-bg.png);" ng-class="{expanded:isExpanded}" >
+    <div class="content has-header top0" >
+    <form name="regForm" novalidate=""  role="form">
+        <div class="list">
+            <div class="padding">
+
+ <md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding>
+    <div>
+
+        <input id="reg_user_id" name="reg_user_id" ng-model="member.reg_user_id" type="hidden">
+
+        <md-input-container class="md-block">
+        <label>Name</label>
+        <md-icon md-svg-src="img/icons/ic_person_24px.svg" ></md-icon>
+        <input ng-model="member.mbr_name" id="mbr_name" name="mbr_name" type="text" required="required">
+        <div class="error-container last-error-container" ng-show="regForm.mbr_name.$error && regForm.$submitted" ng-messages="regForm.mbr_name.$error">
+                    <div ng-messages-include="templates/error_list.html"></div>  
+                </div> 
+      </md-input-container>
+      
+
+      <md-input-container class="md-block">
+        <label>Email</label>
+        <md-icon md-svg-src="img/icons/ic_email_24px.svg" ></md-icon>
+        <input ng-model="member.mbr_email" id="mbr_email" name="mbr_email" type="text"  required="required" ng-pattern="/^.+@.+\..+$/">
+        <div class="error-container last-error-container" ng-show="regForm.mbr_email.$error && regForm.$submitted" ng-messages="regForm.mbr_email.$error">
+                    <div ng-messages-include="templates/error_list.html"></div>  
+                </div> 
+      </md-input-container>
+
+      <md-input-container class="md-block" required="required">
+        <label>Mobile</label>
+        <md-icon md-svg-src="img/icons/ic_phone_24px.svg" ></md-icon>
+        <input ng-model="member.mbr_mobile" id="mbr_mobile" name="mbr_mobile" type="text" required="required">
+        <div class="error-container last-error-container" ng-show="regForm.mbr_mobile.$error && regForm.$submitted" ng-messages="regForm.mbr_mobile.$error">
+                    <div ng-messages-include="templates/error_list.html"></div>  
+                </div> 
+      </md-input-container>
+
+      <md-input-container class="md-block" required="required">
+        <label>Date of Birth</label>
+        <md-icon md-svg-src="img/icons/ic_date_range_black_24px.svg" ></md-icon>
+        <input ng-model="member.mbr_dob" id="mbr_dob" name="mbr_dob" type="date" ng-value="member.mbr_dob" required="required" onfocus="(this.type='date')">
+        <div style="margin-left:20px;" class="error-container last-error-container" ng-show="regForm.mbr_dob.$error && regForm.$submitted" ng-messages="regForm.mbr_dob.$error">
+                    <div ng-messages-include="templates/error_list.html"></div>  
+                </div> 
+      </md-input-container>
+
+    <md-input-container class="md-block">
+        <label>City</label>
+        <md-icon md-svg-src="img/icons/ic_place_24px.svg"></md-icon>
+        <input ng-model="member.mbr_city">
+      </md-input-container>
+        
+
+        <md-input-container class="md-block">
+          <label>Relationship</label>
+          <md-icon md-svg-src="img/icons/users.svg" ></md-icon>
+          <md-select name="relation" ng-model="member.mbr_relation" required="required">
+              <md-option value="Brother">Brother</md-option>
+              <md-option value="Daughter">Daughter</md-option>
+              <md-option value="Father">Father</md-option>
+              <md-option value="Friend">Friend</md-option>
+              <md-option value="Mother">Mother</md-option>
+              <md-option value="Self">Self</md-option>
+              <md-option value="Sister">Sister</md-option>
+              <md-option value="Son">Son</md-option>
+              <md-option value="Spouse">Spouse</md-option>
+              <md-option value="Other">Other</md-option>
+          </md-select>
+                <div class="error-container last-error-container" ng-show="regForm.relation.$error && regForm.$submitted" ng-messages="regForm.relation.$error">
+                    <div ng-messages-include="templates/error_list.html"></div>  
+                </div> 
+        </md-input-container>
+
+        <div class="button-bar ">
+            <button class="button button-small button-stable ink icon-left ion-chevron-left" type="button"  ui-sref="app.gallery">Cancel</button>&nbsp;
+            <button class="button button-small button-balanced ink icon-right ion-chevron-right" type="submit" ng-click = "createNewMember(regForm)" ng-hide="formop=='Edit'" >Submit</button>
+            <button class="button button-small button-balanced ink icon-right ion-chevron-right" type="submit" ng-click="editMember(regForm)" ng-show="formop=='Edit'" >Submit</button>
+        </div>
+
+</div>
+</md-content>
+
+
+</div>
+       </div>
+        
+       </form>
+      
+   </div>
+    </ion-content>
+</ion-view>
+
+
+

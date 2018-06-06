@@ -1,0 +1,13 @@
+    <ion-view view-title="Search Results on Map">
+     <ion-content ng-class="{expanded:$scope.isExpanded}"  >
+     <div class="mid-bar z1 textwhite transparent-dark-bg padding" ng-show="searchresult.length==0" style="z-index:1;position:fixed;">
+        <h3>No Doctors Found!</h3>
+            Unfortunately, No doctors found matching your search criteria. Please &nbsp;<i class="icon ion-compose balanced" ui-sref='app.searchdoctors' style="margin-top:-6px;"> &nbsp;modify</i> your search criteria and try again. 
+        </div>
+                <div id="map" data-tap-disabled="true"></div>
+
+    </ion-content>
+<ion-footer-bar class="bar-dark padding-top padding-left smalltext textwhite patient">
+      Showing {{ searchresult.length }} Doctor(s) for your search criteria &nbsp;<i class="icon ion-compose balanced" ui-sref='app.searchdoctors' style="margin-top:-6px;"></i>
+    </ion-footer-bar>
+</ion-view>

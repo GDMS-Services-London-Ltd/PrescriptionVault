@@ -1,0 +1,56 @@
+
+
+
+    <ion-view view-title="Dr. {{ currentdoctor.results.first_name }} {{ currentdoctor.results.last_name }}">
+     <ion-content ng-class="{expanded:$scope.isExpanded}"  >
+        <div class="content has-header top0 "  >
+
+            <div class="avatar dropshadow pull-left" style="z-index:2;top:100px;height:86px;width:86px;position:absolute;background-image: url({{ currentdoctor.results.url }}),linear-gradient(#28a54c, #8DC26F);"></div>
+
+        <div class="hero has-mask" style="background-image: url({{ currentdoctor.results.url }}),linear-gradient(#28a54c, #8DC26F);-webkit-filter: grayscale(100%);filter: grayscale(100%);">
+         <div class="content transparent-bg">
+
+                <button class="button button-large button-clear flat waves-effect waves-button waves-light icon ion-ios-star pull-right text-white" ng-click="markStarred(currentdoctor.results.loc_id)"></button>
+                <button class="button button-large button-clear flat waves-effect waves-button waves-light icon ion-android-calendar pull-right text-white" ui-sref="app.bookappointment({loc_id: currentdoctor.results.loc_id})"></button>
+                <button class="button button-large button-clear flat waves-effect waves-button waves-light icon ion-map pull-right text-white" ui-sref="app.singlemap({doc_id: currentdoctor.results.doc_id})"></button>
+
+            </div>
+        </div>
+        
+
+        <div class="mid-bar balanced-bg z1 padding">
+            <h3>Dr. {{ currentdoctor.results.first_name }} {{ currentdoctor.results.last_name }}</h3>
+            <p>{{ currentdoctor.results.speciality }}, {{ currentdoctor.results.qualification }} </p>
+
+        </div>
+        <div class="padding-right dropshadow calm-bg text-right">
+            Fees: {{ currentdoctor.results.fees }}
+        </div>
+       <div class="content padding">
+            
+            <h4 class="balanced">Address</h4>
+            <p class="text-muted  topborder">
+                {{ currentdoctor.results.address }}
+                {{ currentdoctor.results.city }}
+            </p>
+
+            <h4 class="balanced">Hours</h4>
+            <p class="text-muted topborder">
+                {{ currentdoctor.results.hours }}
+            </p>
+             <h4 class="balanced">Experience</h4>
+           <p class="topborder">{{ currentdoctor.results.total_exp }} years</p>
+            <h4 class="balanced">Contact</h4>
+            <p class="topborder">{{ currentdoctor.results.phone }} </p>
+            <p class="topborder">{{ currentdoctor.results.email }} </p>
+            <ion-scroll zooming="true" direction="xy" style="width: 100%; height: 130px">
+                <div id="maps" data-tap-disabled="true"></div>
+            </ion-scroll>
+
+            <button class="button button-full button-balanced ink icon-left ion-ios-clock-outline" ui-sref="app.bookappointment({loc_id: currentdoctor.results.loc_id})">Book Appointment</button>
+        </div>
+       
+        </div>
+    </ion-content>
+ui-sref="app.bookappointment({loc_id: currentdoctor.results.loc_id})"
+</ion-view>

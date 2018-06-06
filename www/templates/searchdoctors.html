@@ -1,0 +1,91 @@
+<ion-view view-title="Search Doctors">
+    <ion-content ng-class="{expanded:isExpanded}" >
+        <div class="content has-header top0"  >
+
+  <md-content md-theme="docs-light" >
+
+  <div class="hero slide-up" style="min-height:130px;background: url(img/1g.jpg) center; background-size: cover;">
+  </div>
+    <md-tabs md-dynamic-height md-border-bottom >
+        <md-tab label="Search By Speciality">
+        <md-content class="md-padding ">
+          <div class="padding" >
+        <form name="regForm" novalidate=""  role="form">
+       <md-input-container class="md-block">
+        <label>Speciality</label>
+        <md-icon md-svg-src="img/icons/ic_verified_user_black_24px.svg" ></md-icon>
+        <input ng-model="search.dr_spec" id="dr_spec" name="dr_spec" type="text" placeholder="e.g. Gynaecologist" typeahead="c as c for c in specialitylist | filter:$viewValue | limitTo:10" typeahead-min-length='1'  typeahead-template-url="customTemplate.html">
+        <div class="error-container last-error-container" ng-show="regForm.dr_spec.$error && regForm.$submitted" ng-messages="regForm.dr_spec.$error">
+                    <div ng-messages-include="templates/error_list.html"></div>  
+                </div> 
+      </md-input-container>
+
+      <md-input-container class="md-block">
+        <label>Area</label>
+        <md-icon md-svg-src="img/icons/ic_track_changes_black_24px.svg" ></md-icon>
+        <input ng-model="search.dr_area" id="dr_area" name="dr_area" type="text" required="required" placeholder="e.g. Saltlake" typeahead="c as c for c in arealist | filter:$viewValue | limitTo:10" typeahead-min-length='1' typeahead-template-url="customTemplate.html">
+
+        <div class="error-container last-error-container" ng-show="regForm.dr_area.$error && regForm.$submitted" ng-messages="regForm.dr_area.$error">
+                    <div ng-messages-include="templates/error_list.html"></div>  
+        </div> 
+      </md-input-container>
+
+
+       <md-input-container class="md-block">
+          <label>City</label>
+          <md-icon md-svg-src="img/icons/ic_place_24px.svg" ></md-icon>
+          <md-select name="dr_city" ng-model="search.dr_city" required="required" ng-change="updateCity()">
+              <md-option ng-value="c.city" ng-repeat="c in cities">{{c.city}}</md-option>
+          </md-select>
+                <div class="error-container last-error-container" ng-show="regForm.dr_city.$error && regForm.$submitted" ng-messages="regForm.dr_city.$error">
+                    <div ng-messages-include="templates/error_list.html"></div>  
+                </div> 
+        </md-input-container>
+
+       <button class="button button-full button-balanced ink icon-left ion-search" type="submit" ng-click = "searchBySpec(regForm)">Search Doctors</button>
+        </form>
+      </div>
+        </md-content>
+      </md-tab>
+
+      <md-tab label="Search By Name">
+        <md-content class="md-padding ">
+          <div class="padding" >
+<form name="sForm" novalidate=""  role="form">
+        <md-input-container class="md-block">
+        <label>Doctor's Name</label>
+        <md-icon md-svg-src="img/icons/ic_person_24px.svg" ></md-icon>
+        <input ng-model="search.dr_name" id="dr_name" name="dr_name" type="text" required>
+        <div class="error-container last-error-container" ng-show="sForm.dr_name.$error && sForm.$submitted" ng-messages="sForm.dr_name.$error">
+                    <div ng-messages-include="templates/error_list.html"></div>  
+                </div> 
+      </md-input-container>
+      <md-input-container class="md-block">
+          <label>City</label>
+          <md-icon md-svg-src="img/icons/ic_place_24px.svg" ></md-icon>
+          <md-select name="dr_city" ng-model="search.dr_city" required="required" ng-change="updateCity()">
+              <md-option ng-value="c.city" ng-repeat="c in cities">{{c.city}}</md-option>
+          </md-select>
+                          <div class="error-container last-error-container" ng-show="regForm.dr_city.$error && regForm.$submitted" ng-messages="regForm.dr_city.$error">
+                    <div ng-messages-include="templates/error_list.html"></div>  
+                </div> 
+        </md-input-container>
+      <button class="button button-full button-balanced ink icon-left ion-search" type="submit" ng-click = "searchByName(sForm)">Search Doctors</button>
+</form>
+      </div>
+        </md-content>
+      </md-tab>
+      
+    </md-tabs>
+  </md-content>
+
+</div>
+     </ion-content>
+</ion-view>
+
+
+<script type="text/ng-template" id="customTemplate.html">
+  <a class="balanced">
+      <span bind-html-unsafe="match.label | typeaheadHighlight:query" style="white-space: nowrap;"></span>      
+  </a>
+</script>

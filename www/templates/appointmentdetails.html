@@ -1,0 +1,75 @@
+<ion-view view-title="Confirm Appointment" align-title="left">
+    <ion-content ng-class="{expanded:isExpanded}" style="background: url('img/service-bg.png') center,linear-gradient(#76b852, #1B5E20) ; background-size: cover;">
+    <div class="content has-header top0 padding" >
+    <form name="regForm" novalidate=""  role="form">
+              <div class="mid-bar textwhite text-center transparent-dark-bg">
+            Book Appointment on <strong>{{appointment.apt_date}} {{appointment.apt_time}}</strong>
+        </div>
+
+ <md-content md-theme="docs-dark" layout-gt-sm="row" class="padding-left padding-right dropshadow">
+ 
+    <div>
+
+        <input id="reg_user_id" name="reg_user_id" ng-model="member.reg_user_id" type="hidden">
+
+        <md-input-container class="md-block" style="bottom:18px;">
+          <md-icon md-svg-src="img/icons/users.svg" ></md-icon>
+          <md-select name="apt_mbr_name" id="apt_mbr_name" ng-model="appointment.apt_mbr_name" required="required" placeholder="Select a Member">
+              <md-option ng-value="member.mbr_id"  ng-repeat="member in members">{{member.mbr_name }}</md-option>
+          </md-select>
+                <div class="error-container last-error-container" ng-show="regForm.apt_mbr_name.$error && regForm.$submitted" ng-messages="regForm.apt_mbr_name.$error">
+                    <div ng-messages-include="templates/error_list.html"></div>  
+                </div> 
+        </md-input-container>
+
+        <md-input-container class="md-block" >
+        <label>Doctor Name</label>
+        <md-icon md-svg-src="img/icons/ic_person_24px.svg" ></md-icon>
+        <input ng-model="appointment.apt_doctor" id="apt_doctor" type="text" readonly>
+      </md-input-container>
+      
+
+      <md-input-container class="md-block">
+        <label>Appointment Date</label>
+        <md-icon md-svg-src="img/icons/ic_date_range_black_24px.svg" ></md-icon>
+        <input ng-model="appointment.apt_date" id="apt_date"  type="text"  readonly >
+      </md-input-container>
+
+      <md-input-container class="md-block" required="required">
+        <label>Appointment Time</label>
+        <md-icon md-svg-src="img/icons/ic_schedule_black_24px.svg" ></md-icon>
+        
+        <input ng-model="appointment.apt_time" id="apt_time" type="text" readonly>
+      </md-input-container>
+
+    <div class="md-block">
+        <md-icon md-svg-src="img/icons/ic_alarm_on_black_24px.svg" style="margin-left:3px;" ></md-icon>&nbsp;&nbsp;
+        <label>Set Reminder</label>&nbsp;
+        <md-checkbox ng-model="appointment.reminder" aria-label="Set Reminder">
+          </md-checkbox>
+        
+        </div>
+
+        
+      
+
+</div>
+
+<div class="padding-top padding-bottom button-bar nodropshadow">
+            <button class="button button-small button-stable ink icon-left ion-chevron-left" type="button"  ui-sref="app.searchdoctors">Cancel</button>&nbsp;
+            <button class="button button-small button-balanced ink icon-right ion-chevron-right" type="submit" ng-click="bookAppointment(regForm)" >Confirm</button>
+        </div>
+</md-content>
+
+        
+       </form>
+      
+   </div>
+    </ion-content>
+    <ion-footer-bar class="bar-dark padding-top padding-left smalltext textwhite">
+      Book Appointment of Dr. {{ appointment.apt_doctor }}
+    </ion-footer-bar>
+</ion-view>
+
+
+

@@ -1,0 +1,90 @@
+<ion-view view-title="My Account" class="dark-bg">
+    <ion-content ng-class="{expanded:$scope.isExpanded}">
+        <div class="hero has-mask slide-up dark-bg nodropshadow" style="background-image: url({{photo.src}});-webkit-filter: grayscale(100%);filter: grayscale(100%);">
+            <div class="content mid-bar" style="text-align:left;">
+            </div>
+            <div class="content mid-bar transparent-white-bg" style="text-align:left;">
+
+               <h3><a class="light">{{user.fullname}}</a></h3>
+                <h4 class="pull-left">{{user.email}}</h4>
+                <a href="#" class="pull-right" ng-click="showPopover($event)" style="padding-left:10px;width:10px;">
+                    <i class="icon ion-android-more-vertical light" style="font-size:1.7em;" ></i>
+                </a>
+            </div>
+        </div>
+        <div class="avatar dropshadow" ng-click="openModalPV(photo.src)" style="background-image: url({{photo.src}});z-index:2;top:30px;height:86px;width:86px;position:absolute;"></div>
+        <div class="tabs tabs-dark tabs-icon-top static" style="height:60px;padding-top:12px;">
+            <a ui-sref="app.searchdoctors" class="tab-item">
+                <i class="icon ion-search balanced"></i>
+            </a>
+            <a ui-sref="app.gallery" class="tab-item">
+                <i class="icon ion-images light"></i>
+            </a>
+            <a ui-sref="app.appointmenthistory" class="tab-item">
+                <i class="icon ion-android-calendar calm"></i>
+            </a>
+            <a ng-click="logout()" class="tab-item">
+                <i class="icon ion-power assertive"></i>
+            </a>
+        </div>
+        <div class="list animate-fade-slide-in-right dark-bg medium">
+                <a href="#" class="item item-icon-right" editable-select="user.city" onbeforesave="updateUser('reg_address', $data)" e-ng-options="c.city as c.city for c in cities" >
+                    <h2 class="balanced">City:</h2>
+                    <p>{{showCity()}}</p>
+                    <i class="icon ion-compose light" ></i>
+                </a>
+                <a href="#" class="item item-icon-right" editable-text="user.mobile" onbeforesave="updateUser('reg_mobile', $data)" >
+                    <h2 class="balanced">Contact Number:</h2>
+                    <p>{{user.mobile}}</p>
+                    <i class="icon ion-compose light"></i>
+                </a>
+                <a href="#" class="item item-icon-right" editable-text="user.pwd" e-type="password" onbeforesave="updateUser('reg_pass', $data)" e-form="textBtnForm" >
+                    <h2 class="balanced">Password:</h2>
+                    <input type="{{inputType}}" value="{{user.pwd}}" style="background:rgba(0,0,0,0);color:#999;" disabled>
+                    <i class="icon ion-eye light" ng-click="hideShowPassword()" style="right:48px;" ng-show="inputType=='password'"></i>
+                    <i class="icon ion-eye assertive" ng-click="hideShowPassword()" style="right:48px;" ng-show="inputType!='password'"></i>
+                    <i class="icon ion-compose light" ng-click="textBtnForm.$show()" ng-hide="textBtnForm.$visible"></i>
+                </a>
+                <ul class="list">
+                  <li class="item item-toggle">
+                     <h2 class="balanced">Receive Newsletters</h2>
+                                 <label class="toggle toggle-balanced">
+                       <input type="checkbox" ng-model="user.IsSubscribed" ng-change="updateUser('IsSubscribed', user.IsSubscribed)">
+                       <div class="track">
+                         <div class="handle"></div>
+                       </div>
+                     </label>
+                 </li>
+                </ul>
+                
+        </div>
+    </ion-content>
+</ion-view>
+
+    <script id="templates/popover.html" type="text/ng-template">
+      <ion-popover-view >
+        <ion-content>
+          <ion-list>
+                <ion-item nav-clear menu-close ng-click="openModalPV(photo.src);popover.hide()">
+                   <i class="icon ion-camera balanced"></i> &nbsp;Change Profile Picture
+                </ion-item>
+                <ion-item nav-clear menu-close ui-sref="app.addmember({mbr_id: 0,formop:'Add New'})" ng-click="popover.hide()">
+                   <i class="icon ion-android-person-add calm"></i> &nbsp;Add New Member
+                </ion-item>
+                <ion-item nav-clear menu-close ui-sref="app.searchdoctors" ng-click="popover.hide()">
+                    <i class="icon ion-android-search balanced"></i> &nbsp;Search Doctors
+                </ion-item>
+                <ion-item nav-clear menu-close ui-sref="app.gallery" ng-click="popover.hide()">
+                    <i class="icon ion-star energized"></i> &nbsp;Favorite Doctors
+                </ion-item>
+                
+                <ion-item nav-clear menu-close ui-sref="app.gallery" ng-click="popover.hide()">
+                    <i class="icon ion-images royal"></i> &nbsp;Prescriptions
+                </ion-item>
+                <ion-item nav-clear menu-close ui-sref="app.contact" ng-click="popover.hide()">
+                    <i class="icon ion-chatbox-working dark"></i> &nbsp;Contact Us
+                </ion-item>
+            </ion-list>
+        </ion-content>
+      </ion-popover-view>
+    </script>

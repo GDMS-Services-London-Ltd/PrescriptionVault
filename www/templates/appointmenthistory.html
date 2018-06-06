@@ -1,0 +1,32 @@
+<ion-view view-title="Booked Appointments">
+    <ion-content ng-class="{expanded:isExpanded}" style="min-height:130px;background: url(img/material2.jpg) center; background-size: cover;">
+        <div class="content has-header top0"  >
+
+<md-card class="balanced-bg transparent-dark-bg" ng-repeat="appointment in appointments">
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-subhead">Appointment with <strong>Dr. {{appointment.doctor_name}}</strong> for {{appointment.member_name}} </span>
+            <span class="md-headline">on {{appointment.appointment_date|date}} at {{appointment.appointment_time}}</span>
+            <span class="md-subhead medium">
+            <i  class="icon {{appointment.IsCancelled==0?'ion-checkmark-circled balanced':'ion-close-circled assertive'}}" ></i> Booking {{appointment.IsCancelled==0?'Confirmed':'Cancelled'}}
+            </span>
+            
+            
+          </md-card-title-text>
+        </md-card-title>
+        <md-card-actions layout="row" layout-align="end center">
+        <button class="button icon-left button-small ion-close-circled button-assertive-900" type="button" ng-show="appointment.IsCancelled==0"  ng-click="cancelAppointment(appointment.appt_id, appointment.appointment_date, appointment.appointment_time, appointment.doctor_name)"> Cancel</button>
+        </md-card-actions>
+      </md-card>
+</div>
+
+<div class="mid-bar z1 textwhite transparent-dark-bg padding" ng-show="appointments.length==0">
+        <h3>No Active Appointment!</h3>
+            You do not have any active appointment. <i class="icon ion-search balanced" ui-sref='app.searchdoctors' style="margin-top:-6px;"> &nbsp;search doctors</i>  as per your desired search criteria and book appointments. 
+        </div>
+
+      </ion-content>
+      <ion-footer-bar class="bar-dark padding-top padding-left smalltext textwhite patient">
+      Showing {{ appointments.length }} scheduled appointments
+    </ion-footer-bar>
+</ion-view>

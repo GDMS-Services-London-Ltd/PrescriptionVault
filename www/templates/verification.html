@@ -1,0 +1,33 @@
+<ion-view view-title="Verify Email" align-title="left">
+    <ion-content style="background: url(img/service-bg.png);">
+    <div class="content">
+    <form name="fpForm" novalidate="" ng-submit="verifyEmail(fpForm)" role="form">
+        
+        <div class="list">
+            <div class="padding">
+            <span class="textwhite">Please enter your registered email address below and pin code sent in your registered email to complete verification.</span>
+            </div>
+            <label class="item item-input" ng-class="{ 'has-errors' : fpForm.email.$invalid, 'no-errors' : fpForm.email.$valid}">
+            <ion-md-input placeholder="Email" highlight-color="energized" name="email" ng-pattern="/^.+@.+\..+$/" type="text" ng-model="data.email"  ng-minlength="5" required="required"></ion-md-input>
+            </label>
+            <div class="error-container last-error-container" ng-show="fpForm.email.$error && fpForm.$submitted" ng-messages="fpForm.email.$error">
+                <div ng-messages-include="templates/error_list.html"></div>  
+            </div> 
+
+            <label class="item item-input" ng-class="{ 'has-errors' : fpForm.pwd.$invalid, 'no-errors' : fpForm.pwd.$valid}">
+            <ion-md-input placeholder="Pin Code" highlight-color="balanced" name="pwd" type="password" ng-model="data.pwd" ng-value="" required="required"></ion-md-input>
+            </label>
+            <div class="error-container last-error-container" ng-show="fpForm.pwd.$error && fpForm.$submitted" ng-messages="fpForm.pwd.$error">
+                <div ng-messages-include="templates/error_list.html"></div>  
+            </div>
+       </div>
+        <div class="padding button-bar nodropshadow">
+            <button class="button button-small button-stable ink icon-left ion-chevron-left" type="button"  ui-sref="app.login">Cancel</button>&nbsp;
+            <button class="button button-small button-balanced ink icon-right ion-chevron-right" type="submit" >Activate</button>
+        </div>
+       </form>
+      
+   </div>
+    </ion-content>
+</ion-view>
+
